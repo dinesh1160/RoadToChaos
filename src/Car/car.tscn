@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhhit7xi1deji"]
+
+[ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="1_1koar"]
+[ext_resource type="Script" path="res://src/Car/car.gd" id="1_x62rg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tbqi"]
+radius = 26.0
+height = 130.0
+
+[node name="Car" type="CharacterBody2D"]
+script = ExtResource("1_x62rg")
+
+[node name="Car-sheet" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("1_1koar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3tbqi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
