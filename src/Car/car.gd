@@ -8,7 +8,10 @@ var drag = -0.06
 var braking = -450
 #var max_speed_reverse = 300
 var slip_speed = 400  # Speed where traction is reduced
-var traction_fast = 2.0 # High-speed traction
+var traction_fast = 2.0
+
+
+ # High-speed traction
 var traction_slow = 10  # Low-speed traction
 
 var acceleration = Vector2.ZERO
