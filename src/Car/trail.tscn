@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2h2kwufsa1gx"]
+
+[ext_resource type="Texture2D" uid="uid://dyd2etq8cy1c" path="res://assets/sand.jpg" id="1_dwaja"]
+[ext_resource type="Script" path="res://src/Car/trail.gd" id="1_pjf2r"]
+
+[sub_resource type="Curve" id="Curve_yhhhf"]
+_data = [Vector2(0.0684211, 0), 0.0, 0.0, 0, 0, Vector2(0.410526, 0.054945), 0.0, 0.0, 0, 0, Vector2(0.468421, 0.571429), 0.927961, 0.927961, 0, 0, Vector2(0.926316, 0.758242), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="trail" type="Line2D"]
+z_index = -1
+width = 7.0
+width_curve = SubResource("Curve_yhhhf")
+default_color = Color(0.751981, 0.448951, 0.369532, 0.847059)
+texture = ExtResource("1_dwaja")
+script = ExtResource("1_pjf2r")

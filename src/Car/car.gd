@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var animation_player = $AnimationPlayer
+
+
 var wheel_base = 60  # Distance from front to rear wheel
 var steering_angle = 15  # Amount that front wheel turns, in degrees
 var engine_power = 1000  # Forward acceleration force.
@@ -19,6 +22,7 @@ var steer_direction
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
+	vibration()
 	get_input()
 	apply_friction(delta)
 	calculate_steering(delta)
@@ -64,3 +68,10 @@ func calculate_steering(delta):
 	if d < 0:
 		velocity = -new_heading * velocity.length()
 	rotation = new_heading.angle()
+
+func vibration():
+	if animation_player.current_animation == "vibrate":
+		return
+	else:
+		animation_player.play("vibrate")
+	

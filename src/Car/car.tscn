@@ -1,13 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhhit7xi1deji"]
+[gd_scene load_steps=8 format=3 uid="uid://bhhit7xi1deji"]
 
 [ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="1_1koar"]
 [ext_resource type="Script" path="res://src/Car/car.gd" id="1_x62rg"]
+[ext_resource type="PackedScene" uid="uid://c2h2kwufsa1gx" path="res://src/Car/trail.tscn" id="3_febys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tbqi"]
 radius = 26.0
 height = 130.0
 
+[sub_resource type="Animation" id="Animation_5vnbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Car-sheet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wbnjl"]
+resource_name = "vibrate"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Car-sheet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0.5), Vector2(0, 0), Vector2(0, -0.05), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mayjl"]
+_data = {
+"RESET": SubResource("Animation_5vnbw"),
+"vibrate": SubResource("Animation_wbnjl")
+}
+
 [node name="Car" type="CharacterBody2D"]
+top_level = true
 script = ExtResource("1_x62rg")
 
 [node name="Car-sheet" type="Sprite2D" parent="."]
@@ -20,3 +60,29 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3tbqi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mayjl")
+}
+autoplay = "vibrate"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-47, 16)
+
+[node name="trail" parent="Marker2D" instance=ExtResource("3_febys")]
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(-49, -18)
+
+[node name="trail" parent="Marker2D2" instance=ExtResource("3_febys")]
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(40, -20)
+
+[node name="trail" parent="Marker2D3" instance=ExtResource("3_febys")]
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(42, 17)
+
+[node name="trail" parent="Marker2D4" instance=ExtResource("3_febys")]
