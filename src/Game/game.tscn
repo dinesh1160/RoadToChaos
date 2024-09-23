@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://byinh3p0n1tsy"]
+[gd_scene load_steps=49 format=3 uid="uid://byinh3p0n1tsy"]
 
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_jkflc"]
 [ext_resource type="Script" path="res://src/Game/game.gd" id="1_nnfux"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bhhit7xi1deji" path="res://src/Car/car.tscn" id="12_70pfm"]
 [ext_resource type="Texture2D" uid="uid://dyd2etq8cy1c" path="res://assets/sand.jpg" id="13_h2j83"]
 [ext_resource type="Script" path="res://src/Game/BulletManger.gd" id="15_3xskd"]
+[ext_resource type="PackedScene" uid="uid://dn2712wtyy3an" path="res://src/Enemies/manmy.tscn" id="16_wq76j"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xh64f"]
 frequency = 0.006
@@ -294,3 +295,6 @@ shape_material = SubResource("Resource_iru11")
 
 [node name="BulletManger" type="Node2D" parent="."]
 script = ExtResource("15_3xskd")
+
+[node name="Manmy" parent="." instance=ExtResource("16_wq76j")]
+position = Vector2(562, 97)

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal fired_bullet(bullet, position,direction)
 
+var health = 30  #put it in the gamemanager
+
 @onready var animation_player = $AnimationPlayer
 @export var Bullet : PackedScene
 @onready var end_of_gun = $EndOfGun
@@ -89,3 +91,7 @@ func shoot():
 	var direction = end_of_gun.global_position.direction_to(target.global_position).normalized() #finds the direction using another marker2d called target
 	
 	emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)
+
+func handle_hit():
+	health -= 1
+	print(health)

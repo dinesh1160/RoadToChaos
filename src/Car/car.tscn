@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhhit7xi1deji"]
+[gd_scene load_steps=10 format=3 uid="uid://bhhit7xi1deji"]
 
 [ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="1_1koar"]
 [ext_resource type="Script" path="res://src/Car/car.gd" id="1_x62rg"]
@@ -47,6 +47,9 @@ _data = {
 "vibrate": SubResource("Animation_wbnjl")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk7rw"]
+size = Vector2(107, 42)
+
 [node name="Car" type="CharacterBody2D"]
 top_level = true
 script = ExtResource("1_x62rg")
@@ -94,3 +97,9 @@ position = Vector2(58, 0)
 
 [node name="target" type="Marker2D" parent="."]
 position = Vector2(81, 0)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_sk7rw")
