@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhhit7xi1deji"]
+[gd_scene load_steps=9 format=3 uid="uid://bhhit7xi1deji"]
 
 [ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="1_1koar"]
 [ext_resource type="Script" path="res://src/Car/car.gd" id="1_x62rg"]
+[ext_resource type="PackedScene" uid="uid://h6i7k3hfykvk" path="res://src/Car/bullet.tscn" id="2_60j46"]
 [ext_resource type="PackedScene" uid="uid://c2h2kwufsa1gx" path="res://src/Car/trail.tscn" id="3_febys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tbqi"]
@@ -49,6 +50,7 @@ _data = {
 [node name="Car" type="CharacterBody2D"]
 top_level = true
 script = ExtResource("1_x62rg")
+Bullet = ExtResource("2_60j46")
 
 [node name="Car-sheet" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -86,3 +88,9 @@ position = Vector2(40, -20)
 position = Vector2(42, 17)
 
 [node name="trail" parent="Marker2D4" instance=ExtResource("3_febys")]
+
+[node name="EndOfGun" type="Marker2D" parent="."]
+position = Vector2(58, 0)
+
+[node name="target" type="Marker2D" parent="."]
+position = Vector2(81, 0)

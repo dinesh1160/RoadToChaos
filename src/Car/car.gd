@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
-@onready var animation_player = $AnimationPlayer
+signal fired_bullet(bullet, position,direction)
 
+@onready var animation_player = $AnimationPlayer
+@export var Bullet : PackedScene
+@onready var end_of_gun = $EndOfGun
+@onready var target = $target
 
 var wheel_base = 60  # Distance from front to rear wheel
 var steering_angle = 15  # Amount that front wheel turns, in degrees
@@ -75,3 +79,13 @@ func vibration():
 	else:
 		animation_player.play("vibrate")
 	
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("shoot"):
+		shoot();
+	
+	
+func shoot():
+	var bullet_instance = Bullet.instantiate()
+	var direction = end_of_gun.global_position.direction_to(target.global_position).normalized() #finds the direction using another marker2d called target
+	
+	emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://h6i7k3hfykvk"]
+
+[ext_resource type="Script" path="res://src/Car/bullet.gd" id="1_8b67v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a43p"]
+size = Vector2(3, 3)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ej4oh"]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_8b67v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1a43p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 4)
+texture = SubResource("PlaceholderTexture2D_ej4oh")
