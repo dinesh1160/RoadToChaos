@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn2712wtyy3an"]
+[gd_scene load_steps=6 format=3 uid="uid://dn2712wtyy3an"]
 
 [ext_resource type="Texture2D" uid="uid://b7an4p7rr1jkn" path="res://assets/enemy.png" id="1_syph8"]
 [ext_resource type="Script" path="res://src/Enemies/manmy.gd" id="1_t0h41"]
-[ext_resource type="PackedScene" uid="uid://bhhit7xi1deji" path="res://src/Car/car.tscn" id="3_2t5e0"]
 [ext_resource type="PackedScene" uid="uid://h6i7k3hfykvk" path="res://src/Car/bullet.tscn" id="4_bqg2s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uw36w"]
@@ -14,25 +13,26 @@ radius = 342.841
 [node name="Manmy" type="CharacterBody2D"]
 script = ExtResource("1_t0h41")
 Bullet = ExtResource("4_bqg2s")
-Car = ExtResource("3_2t5e0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_syph8")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_uw36w")
 
 [node name="endpoint" type="Marker2D" parent="."]
-position = Vector2(13, 0)
+position = Vector2(19, 0)
 
-[node name="attackzone" type="Area2D" parent="."]
+[node name="PlayerDectection" type="Area2D" parent="." groups=["enemy"]]
+visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDectection"]
 shape = SubResource("CircleShape2D_khvyg")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="attackzone" to="." method="_on_attackzone_body_entered"]
+[connection signal="body_entered" from="PlayerDectection" to="." method="_on_player_dectection_body_entered"]
+[connection signal="body_exited" from="PlayerDectection" to="." method="_on_player_dectection_body_exited"]

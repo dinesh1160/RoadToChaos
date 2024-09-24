@@ -1,14 +1,25 @@
 extends CharacterBody2D
 
+class_name Enemy
+
 signal enemy_fired_bullet(bullet, position,direction)
 @export var Bullet : PackedScene
-@export var Car : PackedScene
+#@export var Cars : PackedScene
 @onready var endpoint = $endpoint
 
-var health = 5
-var patrole
+var car:Car = null   #car injuction
 
-@onready var attackzone = $attackzone
+var health = 5
+var engage = false
+
+func _ready():
+	pass
+	
+func _physics_process(delta):
+	if engage and car!=null:
+		print(car.global_position)
+		rotation = global_position.direction_to(car.global_position).angle()
+		shoot()
 
 func handle_hit():
 	health -= 1
@@ -17,17 +28,23 @@ func handle_hit():
 	print(health)
 
 func _on_area_2d_body_entered(body):
-	health = 0
-	handle_hit()
+	if body.is_in_group("car"):
+		health = 0
+		handle_hit()
 
 func shoot():
 	var bullet_instance = Bullet.instantiate()
-	var car_instance = Car.instantiate()
-	var direction = endpoint.global_position.direction_to(car_instance.global_position).normalized() #finds the direction using another marker2d called target
-	
+	var direction = endpoint.global_position.direction_to(car.global_position).normalized() #finds the direction using another marker2d called target
 	emit_signal("enemy_fired_bullet",bullet_instance,endpoint.global_position,direction)
 	
-func _on_attackzone_body_entered(body):
-	patrole = false
-	shoot()
-	
+
+func _on_player_dectection_body_entered(body): #to detect the car in range
+	if body.is_in_group("car"):
+		engage = true
+		car = body
+		
+
+func _on_player_dectection_body_exited(body): #to detect the car out of range
+	if body.is_in_group("car"):
+		engage = false
+		car = null

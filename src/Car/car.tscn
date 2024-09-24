@@ -50,7 +50,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk7rw"]
 size = Vector2(107, 42)
 
-[node name="Car" type="CharacterBody2D"]
+[node name="Car" type="CharacterBody2D" groups=["car"]]
 top_level = true
 script = ExtResource("1_x62rg")
 Bullet = ExtResource("2_60j46")

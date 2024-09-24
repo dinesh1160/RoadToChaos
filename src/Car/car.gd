@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Car
 
 signal fired_bullet(bullet, position,direction)
 
@@ -94,4 +95,6 @@ func shoot():
 
 func handle_hit():
 	health -= 1
+	if health<=0:
+		queue_free()
 	print(health)
