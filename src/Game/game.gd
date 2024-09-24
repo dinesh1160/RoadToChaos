@@ -5,6 +5,6 @@ extends Node2D
 @onready var manmy = $Manmy
 
 func _ready() -> void:
-	car.fired_bullet.connect(Callable(bullet_manger, "handle_bullet_spawned"))
-	manmy.enemy_fired_bullet.connect(Callable(bullet_manger, "handle_bullet_spawned"))
+	Signalmanager.fired_bullet.connect(Callable(bullet_manger, "handle_bullet_spawned"))
+	#manmy.enemy_fired_bullet.connect(Callable(bullet_manger, "handle_bullet_spawned"))
 	

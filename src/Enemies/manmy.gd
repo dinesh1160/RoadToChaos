@@ -4,7 +4,7 @@ class_name Enemy
 
 @onready var attack_timer = $Attack_timer
 
-signal enemy_fired_bullet(bullet, position,direction)
+#signal enemy_fired_bullet(bullet, position,direction)
 @export var Bullet : PackedScene
 #@export var Cars : PackedScene
 @onready var endpoint = $endpoint
@@ -38,7 +38,7 @@ func shoot():
 	can_attack = false
 	var bullet_instance = Bullet.instantiate()
 	var direction = endpoint.global_position.direction_to(car.global_position).normalized() #finds the direction using another marker2d called target
-	emit_signal("enemy_fired_bullet",bullet_instance,endpoint.global_position,direction)
+	Signalmanager.emit_signal("fired_bullet",bullet_instance,endpoint.global_position,direction)
 	attack_timer.start()
 
 func _on_player_dectection_body_entered(body): #to detect the car in range

@@ -1,3 +1,3 @@
 extends Node
 
-#signal fired_bullet(bullet, position,direction)
+signal fired_bullet(bullet, position,direction)

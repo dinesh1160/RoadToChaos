@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Car
 
-signal fired_bullet(bullet, position,direction)
+#signal fired_bullet(bullet, position,direction)
 
 var health = 30  #put it in the gamemanager
 
@@ -91,7 +91,7 @@ func shoot():
 	var bullet_instance = Bullet.instantiate()
 	var direction = end_of_gun.global_position.direction_to(target.global_position).normalized() #finds the direction using another marker2d called target
 	
-	emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)
+	Signalmanager.emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)
 
 func handle_hit():
 	health -= 1
