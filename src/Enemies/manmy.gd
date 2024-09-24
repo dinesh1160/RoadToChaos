@@ -19,7 +19,7 @@ func _ready():
 	
 func _physics_process(delta):
 	if engage and car!=null:
-		rotation = global_position.direction_to(car.global_position).angle()
+		rotation = lerp(rotation,global_position.direction_to(car.global_position).angle(),0.2)
 		if can_attack:
 			shoot()
 
