@@ -9,6 +9,8 @@ var health = 30  #put it in the gamemanager
 @export var Bullet : PackedScene
 @onready var end_of_gun = $EndOfGun
 @onready var target = $target
+@onready var boost_timer = $Boost_timer
+
 
 var wheel_base = 60  # Distance from front to rear wheel
 var steering_angle = 15  # Amount that front wheel turns, in degrees
@@ -26,6 +28,7 @@ var traction_slow = 10  # Low-speed traction
 
 var acceleration = Vector2.ZERO
 var steer_direction
+var can_boost = true
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
@@ -36,6 +39,7 @@ func _physics_process(delta):
 	velocity += acceleration * delta
 	move_and_slide()
 
+
 	
 func get_input():
 	var turn = Input.get_axis("left", "right")
@@ -44,6 +48,12 @@ func get_input():
 		acceleration = transform.x * engine_power
 	if Input.is_action_pressed("back"):
 		acceleration = transform.x * braking
+	if can_boost == true:
+		if Input.is_action_pressed("boost"):
+			can_boost = false
+			boost_timer.start()
+			print("boost")
+			acceleration = transform.x * (engine_power+30000)
 	
 		
 func apply_friction(delta):
@@ -87,6 +97,7 @@ func _unhandled_input(event):
 		shoot();
 	
 	
+	
 func shoot():
 	var bullet_instance = Bullet.instantiate()
 	var direction = end_of_gun.global_position.direction_to(target.global_position).normalized() #finds the direction using another marker2d called target
@@ -98,3 +109,6 @@ func handle_hit():
 	if health<=0:
 		queue_free()
 	print(health)
+	
+func _on_boost_timer_timeout():
+	can_boost = true

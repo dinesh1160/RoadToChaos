@@ -6,5 +6,4 @@ extends Node2D
 
 func _ready() -> void:
 	Signalmanager.fired_bullet.connect(Callable(bullet_manger, "handle_bullet_spawned"))
-	#manmy.enemy_fired_bullet.connect(Callable(bullet_manger, "handle_bullet_spawned"))
 	

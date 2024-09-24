@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Enemy
 
 @onready var attack_timer = $Attack_timer
+@onready var patrol_timer = $Patrol_timer
 
 #signal enemy_fired_bullet(bullet, position,direction)
 @export var Bullet : PackedScene
@@ -13,11 +14,20 @@ var car:Car = null   #car injuction
 var health = 5
 var engage = false
 var can_attack = true
-
+var can_patrol = true
 func _ready():
 	pass
 	
 func _physics_process(delta):
+
+	if can_patrol == true:
+		can_patrol = false
+		var random_patrol = Vector2(randf_range(-4, 8), randf_range(-4, 8))
+		position = lerp(position , (position + random_patrol) , 2)
+		print(position)
+		patrol_timer.start()
+	
+		
 	if engage and car!=null:
 		rotation = lerp(rotation,global_position.direction_to(car.global_position).angle(),0.2)
 		if can_attack:
@@ -54,3 +64,7 @@ func _on_player_dectection_body_exited(body): #to detect the car out of range
 
 func _on_attack_timer_timeout():
 	can_attack = true
+
+
+func _on_patrol_timer_timeout():
+	can_patrol = true
