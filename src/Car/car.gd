@@ -102,7 +102,7 @@ func shoot():
 	var bullet_instance = Bullet.instantiate()
 	var direction = end_of_gun.global_position.direction_to(target.global_position).normalized() #finds the direction using another marker2d called target
 	
-	Signalmanager.emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)
+	Signalmanager.emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction,)
 
 func handle_hit():
 	health -= 1

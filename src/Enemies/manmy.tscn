@@ -4,19 +4,24 @@
 [ext_resource type="Script" path="res://src/Enemies/manmy.gd" id="1_t0h41"]
 [ext_resource type="PackedScene" uid="uid://h6i7k3hfykvk" path="res://src/Car/bullet.tscn" id="4_bqg2s"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_107of"]
+radius = 1.85185
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_uw36w"]
 radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_khvyg"]
 radius = 203.333
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_107of"]
-radius = 16.6667
-
-[node name="Manmy" type="CharacterBody2D"]
+[node name="Manmy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_t0h41")
 Bullet = ExtResource("4_bqg2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.33333, 0)
+scale = Vector2(0.546667, -1.72)
+shape = SubResource("CircleShape2D_107of")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -39,12 +44,8 @@ shape = SubResource("CircleShape2D_khvyg")
 [node name="Attack_timer" type="Timer" parent="."]
 
 [node name="Patrol_timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 2.0
 autostart = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.33333, 0)
-shape = SubResource("CircleShape2D_107of")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="PlayerDectection" to="." method="_on_player_dectection_body_entered"]

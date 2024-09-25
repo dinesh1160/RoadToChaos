@@ -21,14 +21,6 @@ func _on_kill_timer_timeout():
 	queue_free()
 
 
-#func _on_area_entered(area):
-	##should check area is a enemy
-	#var enemy_body = area.get_parent()
-	#if enemy_body.is_in_group(Enemy) and enemy_body.has_method("handle_hit"):
-		#enemy_body.handle_hit()
-		#queue_free()
-
-
 func _on_body_entered(body):
 	if body.has_method("handle_hit"):
 		body.handle_hit()

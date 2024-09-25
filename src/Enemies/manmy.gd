@@ -5,9 +5,7 @@ class_name Enemy
 @onready var attack_timer = $Attack_timer
 @onready var patrol_timer = $Patrol_timer
 
-#signal enemy_fired_bullet(bullet, position,direction)
 @export var Bullet : PackedScene
-#@export var Cars : PackedScene
 @onready var endpoint = $endpoint
 var car:Car = null   #car injuction
 
@@ -15,19 +13,29 @@ var health = 5
 var engage = false
 var can_attack = true
 var can_patrol = true
+
+#patrol
+var origin : Vector2 = Vector2.ZERO
+var patrol_location: Vector2 = Vector2.ZERO
+var manmy_velocity: Vector2 = Vector2.ZERO
+var patrol_location_reached:bool = false
+
+
 func _ready():
-	pass
+	velocity = Vector2(4,0)
 	
 func _physics_process(delta):
 
-	if can_patrol == true:
-		can_patrol = false
-		var random_patrol = Vector2(randf_range(-4, 8), randf_range(-4, 8))
-		position = lerp(position , (position + random_patrol) , 2)
-		print(position)
-		patrol_timer.start()
-	
-		
+	if !engage and can_patrol == true:
+		if not patrol_location_reached:
+			velocity = manmy_velocity
+			move_and_slide()
+			rotation = lerp(rotation,global_position.direction_to(patrol_location).angle(),0.2) 
+			if global_position.distance_to(patrol_location) < 5:
+				patrol_location_reached = true
+				velocity = Vector2.ZERO
+				patrol_timer.start()
+
 	if engage and car!=null:
 		rotation = lerp(rotation,global_position.direction_to(car.global_position).angle(),0.2)
 		if can_attack:
@@ -67,4 +75,10 @@ func _on_attack_timer_timeout():
 
 
 func _on_patrol_timer_timeout():
+	var patrol_range = 70
+	var random_x = randf_range(-patrol_range,patrol_range)
+	var random_y = randf_range(-patrol_range,patrol_range)
+	patrol_location = Vector2(random_x,random_y)+ origin
+	patrol_location_reached = false
+	manmy_velocity = global_position.direction_to(patrol_location)*100
 	can_patrol = true
