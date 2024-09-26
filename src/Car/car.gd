@@ -12,7 +12,7 @@ var health = 30  #put it in the gamemanager
 @onready var boost_timer = $Boost_timer
 
 
-var wheel_base = 60  # Distance from front to rear wheel
+var wheel_base = 30  # Distance from front to rear wheel
 var steering_angle = 15  # Amount that front wheel turns, in degrees
 var engine_power = 1000  # Forward acceleration force.
 var friction = -55
@@ -112,3 +112,9 @@ func handle_hit():
 	
 func _on_boost_timer_timeout():
 	can_boost = true
+
+
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("bullet"):
+		handle_hit()
+		area.bullet_hit()

@@ -46,11 +46,18 @@ func handle_hit():
 	if(health<=0):
 		queue_free()
 	print(health)
+	
+	
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("bullet"):
+		handle_hit()
+		area.bullet_hit()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("car"):
 		health = 0
 		handle_hit()
+	
 
 func shoot():
 	can_attack = false
@@ -82,3 +89,5 @@ func _on_patrol_timer_timeout():
 	patrol_location_reached = false
 	manmy_velocity = global_position.direction_to(patrol_location)*100
 	can_patrol = true
+
+

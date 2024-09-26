@@ -2,12 +2,14 @@ extends Area2D
 class_name BULLET
 
 var dir =  Vector2.ZERO
-var speed = 10
+@export var speed = 10
 
 var enemy: Enemy = null
+
 @onready var smoketrail = $Smoketrail
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d_2 = $Sprite2D2
+@onready var hit_vanish_timer = $Hit_vanish_timer
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,10 +28,18 @@ func _on_kill_timer_timeout():
 	queue_free()
 
 
-func _on_body_entered(body):
-	if body.has_method("handle_hit"):
-		body.handle_hit()
-		smoketrail.stop()
-		sprite_2d_2.visible = true
-		animation_player.play("explosion")
-		queue_free()
+#func _on_body_entered(body):
+	#if body.has_method("handle_hit"):
+		#body.handle_hit()
+		#smoketrail.stop()
+		#queue_free()
+func bullet_hit():
+	smoketrail.stop()
+	speed = 0
+	animation_player.play("explosion")
+	hit_vanish_timer.start()
+	
+
+func _on_hit_vanish_timer_timeout():
+	queue_free()
+	
