@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2h2kwufsa1gx"]
+[gd_scene load_steps=4 format=3 uid="uid://c2h2kwufsa1gx"]
 
-[ext_resource type="Texture2D" uid="uid://csvf0ujkysatk" path="res://assets/tire_tex.png" id="1_k0xco"]
 [ext_resource type="Script" path="res://src/Car/trail.gd" id="1_pjf2r"]
 
 [sub_resource type="Curve" id="Curve_yhhhf"]
@@ -8,15 +7,15 @@ _data = [Vector2(0.0736842, 0.0879121), 0.0, 1.18231, 0, 0, Vector2(0.968421, 1)
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_eecql"]
-offsets = PackedFloat32Array(0.0333333, 0.413333, 0.94)
-colors = PackedColorArray(0.466667, 0.341176, 0.286275, 0.282353, 0.498039, 0.384314, 0.333333, 0.729412, 0.360784, 0.207843, 0.133333, 0.756863)
+offsets = PackedFloat32Array(0.0333333, 0.32, 0.96)
+colors = PackedColorArray(0.423529, 0.345098, 0.270588, 0.458824, 0.32549, 0.266667, 0.196078, 0.560784, 0.32549, 0.266667, 0.196078, 1)
 
 [node name="trail" type="Line2D"]
 z_index = -1
 texture_repeat = 2
+rotation = 0.00089786
 width = 5.0
 width_curve = SubResource("Curve_yhhhf")
 default_color = Color(0.254902, 0.164706, 0.164706, 0.686275)
 gradient = SubResource("Gradient_eecql")
-texture = ExtResource("1_k0xco")
 script = ExtResource("1_pjf2r")

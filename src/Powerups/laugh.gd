@@ -1,6 +1,8 @@
 extends Area2D
+@onready var effect_timer = $effect_timer
 
-
+var car = preload("res://src/Car/car.tscn")
+var bullet = preload("res://src/Car/bullet.tscn") 
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,4 +17,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("car"):
+		effect_timer.start()	
+	
 		queue_free()

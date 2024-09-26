@@ -11,7 +11,7 @@ radius = 1.85185
 radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_khvyg"]
-radius = 177.435
+radius = 315.345
 
 [node name="Manmy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.5, 1.5)

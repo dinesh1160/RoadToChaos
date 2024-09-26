@@ -19,4 +19,6 @@ position = Vector2(1.78814e-07, 0.5)
 scale = Vector2(4, 2.16667)
 texture = SubResource("PlaceholderTexture2D_21d41")
 
+[node name="effect_timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

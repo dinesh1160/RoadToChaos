@@ -42,6 +42,7 @@ func _physics_process(delta):
 			shoot()
 
 func handle_hit():
+	
 	health -= 1
 	if(health<=0):
 		queue_free()
