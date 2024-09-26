@@ -5,7 +5,7 @@
 [ext_resource type="Gradient" uid="uid://bwn3w5auwngsl" path="res://assets/smoketrail.tres" id="3_r3dey"]
 
 [sub_resource type="Curve" id="Curve_k5ny6"]
-_data = [Vector2(0.00526316, 1), 0.0, 0.0, 0, 0, Vector2(0.994737, 0.153846), -1.11355, 0.0, 0, 0]
+_data = [Vector2(0.00526316, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.648352), -0.107466, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_xd236"]
