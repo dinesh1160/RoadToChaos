@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://mliv7ptwc5kp"]
+[gd_scene load_steps=6 format=3 uid="uid://mliv7ptwc5kp"]
 
 [ext_resource type="Texture2D" uid="uid://b4ipewva3y3ba" path="res://assets/trail.png" id="1_lgckr"]
 [ext_resource type="Script" path="res://src/Car/smoketrail.gd" id="1_vbne8"]
+[ext_resource type="Gradient" uid="uid://bwn3w5auwngsl" path="res://assets/smoketrail.tres" id="3_r3dey"]
 
 [sub_resource type="Curve" id="Curve_k5ny6"]
 _data = [Vector2(0.00526316, 1), 0.0, 0.0, 0, 0, Vector2(0.994737, 0.153846), -1.11355, 0.0, 0, 0]
@@ -18,4 +19,5 @@ gradient = SubResource("Gradient_xd236")
 texture = ExtResource("1_lgckr")
 texture_mode = 2
 script = ExtResource("1_vbne8")
-wildness = 20.0
+wildness = 30.0
+gradient_col = ExtResource("3_r3dey")

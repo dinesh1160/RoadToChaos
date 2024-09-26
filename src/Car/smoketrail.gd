@@ -14,7 +14,7 @@ var wild_speed = 0.1
 var point_age = [0.0]
 
 func _ready():
-	#gradient = gradient_col
+	gradient = gradient_col
 	set_as_top_level(true)
 	clear_points()
 	if limited_lifetime:
