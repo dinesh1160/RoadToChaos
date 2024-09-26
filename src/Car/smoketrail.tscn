@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://mliv7ptwc5kp"]
+
+[ext_resource type="Texture2D" uid="uid://b4ipewva3y3ba" path="res://assets/trail.png" id="1_lgckr"]
+[ext_resource type="Script" path="res://src/Car/smoketrail.gd" id="1_vbne8"]
+
+[sub_resource type="Curve" id="Curve_k5ny6"]
+_data = [Vector2(0.00526316, 1), 0.0, 0.0, 0, 0, Vector2(0.994737, 0.153846), -1.11355, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xd236"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[node name="Smoketrail" type="Line2D"]
+texture_repeat = 2
+width = 15.0
+width_curve = SubResource("Curve_k5ny6")
+gradient = SubResource("Gradient_xd236")
+texture = ExtResource("1_lgckr")
+texture_mode = 2
+script = ExtResource("1_vbne8")
+wildness = 20.0

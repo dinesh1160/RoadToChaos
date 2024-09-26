@@ -9,8 +9,8 @@ point_count = 4
 
 [node name="trail" type="Line2D"]
 z_index = -1
-width = 7.0
+width = 4.0
 width_curve = SubResource("Curve_yhhhf")
-default_color = Color(0.751981, 0.448951, 0.369532, 0.847059)
+default_color = Color(0.254902, 0.164706, 0.164706, 0.686275)
 texture = ExtResource("1_dwaja")
 script = ExtResource("1_pjf2r")
