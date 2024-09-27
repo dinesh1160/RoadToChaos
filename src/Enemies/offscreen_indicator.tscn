@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cui4op1vwgtbl"]
+
+[ext_resource type="Script" path="res://src/Enemies/offscreen_indicator.gd" id="1_qyxpy"]
+[ext_resource type="Texture2D" uid="uid://cmhg1wo7hd8q1" path="res://assets/arrow.png" id="1_tcdoi"]
+
+[node name="Offscreen_Indicator" type="Node2D"]
+script = ExtResource("1_qyxpy")
+
+[node name="Arrow_sprite" type="Sprite2D" parent="."]
+modulate = Color(0.719649, 0.319158, 0.414647, 1)
+position = Vector2(-8, 0)
+scale = Vector2(0.0825603, 0.0748716)
+texture = ExtResource("1_tcdoi")
+offset = Vector2(-100, 0)
