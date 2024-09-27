@@ -15,9 +15,4 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("car"):
 		Signalmanager.emit_signal("laugh_powerup")
-		effect_timer.start()
 		queue_free()
-
-
-func _on_effect_timer_timeout():
-	Signalmanager.emit_signal("power_reset")

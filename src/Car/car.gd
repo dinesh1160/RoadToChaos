@@ -94,9 +94,9 @@ func vibration():
 		animation_player.play("vibrate")
 	
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("shoot"):
-		shoot();
-	
+	if Input.is_action_just_released("shoot"):
+		shoot()
+		shoot()
 	
 	
 func shoot():

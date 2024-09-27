@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbcgbhm2juigb"]
+[gd_scene load_steps=4 format=3 uid="uid://cqn6821ftbsyf"]
 
-[ext_resource type="Script" path="res://src/Powerups/laugh.gd" id="1_nnj3c"]
+[ext_resource type="Script" path="res://drunken.gd" id="1_715kk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y8nha"]
 radius = 11.0
@@ -8,8 +8,8 @@ radius = 11.0
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_21d41"]
 size = Vector2(2, 6)
 
-[node name="Laugh" type="Area2D"]
-script = ExtResource("1_nnj3c")
+[node name="drunken" type="Area2D"]
+script = ExtResource("1_715kk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y8nha")

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bklrryp5baqei" path="res://assets/spotlight_2.png" id="3_fvi3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1a43p"]
-size = Vector2(3, 3)
+size = Vector2(3.5, 3.5)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ej4oh"]
 
