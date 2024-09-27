@@ -10,6 +10,7 @@ var health = 30  #put it in the gamemanager
 @onready var end_of_gun = $EndOfGun
 @onready var target = $target
 @onready var boost_timer = $Boost_timer
+@onready var powerup_timer = $powerup_timer
 
 
 var wheel_base = 30  # Distance from front to rear wheel
@@ -110,6 +111,7 @@ func handle_hit():
 		queue_free()
 	print(health)
 	
+	
 func _on_boost_timer_timeout():
 	can_boost = true
 
@@ -118,3 +120,13 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("bullet"):
 		handle_hit()
 		area.bullet_hit()
+		
+	
+func size_powerup():
+	powerup_timer.start()
+	scale = Vector2(0.5,0.5)	
+	
+func _on_powerup_timer_timeout():
+	print("gg")
+	scale = Vector2(1,1)
+

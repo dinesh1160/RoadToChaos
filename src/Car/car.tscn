@@ -106,5 +106,9 @@ shape = SubResource("RectangleShape2D_sk7rw")
 
 [node name="Boost_timer" type="Timer" parent="."]
 
+[node name="powerup_timer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Boost_timer" to="." method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="powerup_timer" to="." method="_on_powerup_timer_timeout"]

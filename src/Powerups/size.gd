@@ -1,5 +1,4 @@
 extends Area2D
-@onready var effect_timer = $effect_timer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,10 +13,5 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("car"):
-		Signalmanager.emit_signal("laugh_powerup")
-		effect_timer.start()
+		Signalmanager.emit_signal("size_powerup")
 		queue_free()
-
-
-func _on_effect_timer_timeout():
-	Signalmanager.emit_signal("power_reset")
