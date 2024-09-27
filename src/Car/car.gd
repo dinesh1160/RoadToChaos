@@ -61,7 +61,8 @@ func get_input():
 			boost_timer.start()
 			print("boost")
 			acceleration = transform.x * (engine_power+30000)
-	
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 		
 func apply_friction(delta):
 	if acceleration == Vector2.ZERO and velocity.length() < 50:
@@ -99,9 +100,9 @@ func vibration():
 	else:
 		animation_player.play("vibrate")
 	
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
+#func _unhandled_input(event):
+	#if Input.is_action_just_pressed("shoot"):
+		#shoot()
 	
 func triple_shoot():
 	var bullet_instance = Bullet.instantiate()
