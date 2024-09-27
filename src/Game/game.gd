@@ -20,7 +20,6 @@ func _ready() -> void:
 	Signalmanager.powerup_reset.connect(Callable(car, "powerup_reset"))
 	
 func _physics_process(delta):
-	
 	mirage.global_position = car.global_position
 
 func laugh_powerup():

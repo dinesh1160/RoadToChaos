@@ -123,10 +123,14 @@ func _on_hitbox_area_entered(area):
 		
 	
 func size_powerup():
+	var x_values = [-0.5, 1.5 , 3]
+	var y_values = [-0.5, 1.5 , 3]
+	var random_x = x_values[randi() % x_values.size()]
+	var random_y = y_values[randi() % x_values.size()]
 	powerup_timer.start()
-	scale = Vector2(0.5,0.5)	
+	scale = Vector2(random_x,random_y)	
 	
 func _on_powerup_timer_timeout():
-	print("gg")
+	print("timeout")
 	scale = Vector2(1,1)
 

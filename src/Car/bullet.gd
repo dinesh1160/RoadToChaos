@@ -39,7 +39,6 @@ func bullet_hit():
 	animation_player.play("explosion")
 	hit_vanish_timer.start()
 	
-
 func _on_hit_vanish_timer_timeout():
 	queue_free()
 	
