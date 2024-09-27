@@ -16,6 +16,7 @@ func _ready() -> void:
 	Signalmanager.laugh_powerup.connect(Callable(game, "laugh_powerup"))
 	Signalmanager.size_powerup.connect(Callable(car, "size_powerup"))
 	Signalmanager.druken_powerup.connect(Callable(game, "druken_powerup"))
+	Signalmanager.triple_powerup.connect(Callable(car, "triple_powerup"))
 
 	Signalmanager.powerup_reset.connect(Callable(car, "powerup_reset"))
 	

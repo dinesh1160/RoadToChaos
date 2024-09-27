@@ -8,9 +8,15 @@ var health = 30  #put it in the gamemanager
 @onready var animation_player = $AnimationPlayer
 @export var Bullet : PackedScene
 @onready var end_of_gun = $EndOfGun
-@onready var target = $target
 @onready var boost_timer = $Boost_timer
 @onready var powerup_timer = $powerup_timer
+
+
+var triple_power: bool = false
+@onready var target = $target
+@onready var target2 = $target2
+@onready var target3 = $target3
+
 
 
 var wheel_base = 30  # Distance from front to rear wheel
@@ -94,16 +100,30 @@ func vibration():
 		animation_player.play("vibrate")
 	
 func _unhandled_input(event):
-	if Input.is_action_just_released("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		shoot()
-		shoot()
+	
+func triple_shoot():
+	var bullet_instance = Bullet.instantiate()
+	var direction = end_of_gun.global_position.direction_to(target.global_position).normalized()  #finds the direction using another marker2d called target
+	Signalmanager.emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)
+	
+	var bullet_instance2 = Bullet.instantiate()
+	var direction2 = end_of_gun.global_position.direction_to(target2.global_position).normalized()  #finds the direction using another marker2d called target
+	Signalmanager.emit_signal("fired_bullet",bullet_instance2,end_of_gun.global_position,direction2)
+	
+	var bullet_instance3 = Bullet.instantiate()
+	var direction3 = end_of_gun.global_position.direction_to(target3.global_position).normalized()  #finds the direction using another marker2d called target
+	Signalmanager.emit_signal("fired_bullet",bullet_instance3,end_of_gun.global_position,direction3)
 	
 	
 func shoot():
-	var bullet_instance = Bullet.instantiate()
-	var direction = end_of_gun.global_position.direction_to(target.global_position).normalized() #finds the direction using another marker2d called target
-	
-	Signalmanager.emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction,)
+	if triple_power == true:
+		triple_shoot()
+	else:
+		var bullet_instance = Bullet.instantiate()
+		var direction = end_of_gun.global_position.direction_to(target.global_position).normalized() 
+		Signalmanager.emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)
 
 func handle_hit():
 	health -= 1
@@ -128,9 +148,15 @@ func size_powerup():
 	var random_x = x_values[randi() % x_values.size()]
 	var random_y = y_values[randi() % x_values.size()]
 	powerup_timer.start()
-	scale = Vector2(random_x,random_y)	
+	scale = Vector2(random_x,random_y)
+	
+func triple_powerup():
+	triple_power = true
+	powerup_timer.start()
 	
 func _on_powerup_timer_timeout():
 	print("timeout")
-	scale = Vector2(1,1)
-
+	if scale != Vector2(1,1):
+		scale = Vector2(1,1)
+	triple_power = false
+	

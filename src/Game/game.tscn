@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://byinh3p0n1tsy"]
+[gd_scene load_steps=47 format=3 uid="uid://byinh3p0n1tsy"]
 
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_jkflc"]
 [ext_resource type="Script" path="res://src/Game/game.gd" id="1_nnfux"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bbcgbhm2juigb" path="res://src/Powerups/laugh.tscn" id="17_rqb7r"]
 [ext_resource type="PackedScene" uid="uid://b5c6hnej1s84g" path="res://src/Powerups/size.tscn" id="18_vyo3v"]
 [ext_resource type="PackedScene" uid="uid://cqn6821ftbsyf" path="res://src/Powerups/drunken.tscn" id="20_3hncb"]
+[ext_resource type="PackedScene" uid="uid://do8k484hxqya3" path="res://src/Powerups/triple_fire.tscn" id="21_gdjdn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4g6k6"]
 shader = ExtResource("2_wv0ls")
@@ -287,6 +288,9 @@ position = Vector2(181, 1294)
 [node name="drunken" parent="." instance=ExtResource("20_3hncb")]
 
 [node name="powerup_timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
+
+[node name="triple fire" parent="." instance=ExtResource("21_gdjdn")]
+position = Vector2(803, 72)
 
 [connection signal="timeout" from="powerup_timer" to="." method="_on_powerup_timer_timeout"]

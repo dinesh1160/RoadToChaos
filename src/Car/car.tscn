@@ -98,6 +98,12 @@ position = Vector2(58, 0)
 [node name="target" type="Marker2D" parent="."]
 position = Vector2(81, 0)
 
+[node name="target2" type="Marker2D" parent="."]
+position = Vector2(81, 4)
+
+[node name="target3" type="Marker2D" parent="."]
+position = Vector2(81, -4)
+
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
@@ -107,7 +113,7 @@ shape = SubResource("RectangleShape2D_sk7rw")
 [node name="Boost_timer" type="Timer" parent="."]
 
 [node name="powerup_timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Boost_timer" to="." method="_on_boost_timer_timeout"]
