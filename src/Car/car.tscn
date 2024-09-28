@@ -93,7 +93,7 @@ position = Vector2(42, 17)
 [node name="trail" parent="Marker2D4" instance=ExtResource("3_febys")]
 
 [node name="EndOfGun" type="Marker2D" parent="."]
-position = Vector2(58, 0)
+position = Vector2(65, 0)
 
 [node name="target" type="Marker2D" parent="."]
 position = Vector2(81, 0)

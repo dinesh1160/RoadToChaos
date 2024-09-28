@@ -28,11 +28,6 @@ func _on_kill_timer_timeout():
 	queue_free()
 
 
-#func _on_body_entered(body):
-	#if body.has_method("handle_hit"):
-		#body.handle_hit()
-		#smoketrail.stop()
-		#queue_free()
 func bullet_hit():
 	smoketrail.stop()
 	speed = 0

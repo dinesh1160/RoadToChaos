@@ -31,7 +31,7 @@ var traction_fast = 2.0
 
 
  # High-speed traction
-var traction_slow = 10  # Low-speed traction
+var traction_slow = 10  #Low-speed traction
 
 var acceleration = Vector2.ZERO
 var steer_direction
