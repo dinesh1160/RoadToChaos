@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhhit7xi1deji"]
+[gd_scene load_steps=14 format=3 uid="uid://bhhit7xi1deji"]
 
 [ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="1_1koar"]
 [ext_resource type="Script" path="res://src/Car/car.gd" id="1_x62rg"]
 [ext_resource type="PackedScene" uid="uid://h6i7k3hfykvk" path="res://src/Car/bullet.tscn" id="2_60j46"]
 [ext_resource type="PackedScene" uid="uid://c2h2kwufsa1gx" path="res://src/Car/trail.tscn" id="3_febys"]
 [ext_resource type="PackedScene" uid="uid://dolk8k4ay3ckg" path="res://src/Car/smoke.tscn" id="5_luv2u"]
+[ext_resource type="Texture2D" uid="uid://bklrryp5baqei" path="res://assets/spotlight_2.png" id="6_8w4fp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tbqi"]
 radius = 26.0
@@ -24,6 +25,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spotlight2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
 
 [sub_resource type="Animation" id="Animation_wbnjl"]
 resource_name = "vibrate"
@@ -42,14 +55,34 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 0.5), Vector2(0, 0), Vector2(0, -0.05), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_21h5j"]
+resource_name = "ani_boost"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spotlight2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.00136e-05, 1.00136e-05), Vector2(0.675781, 0.703125), Vector2(1.00136e-05, 1.00136e-05)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mayjl"]
 _data = {
 "RESET": SubResource("Animation_5vnbw"),
+"ani_boost": SubResource("Animation_21h5j"),
 "vibrate": SubResource("Animation_wbnjl")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk7rw"]
 size = Vector2(107, 42)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dvpwi"]
+blend_mode = 1
 
 [node name="Car" type="CharacterBody2D" groups=["car"]]
 top_level = true
@@ -122,6 +155,13 @@ shape = SubResource("RectangleShape2D_sk7rw")
 [node name="powerup_timer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="Spotlight2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.713726, 0.164706, 1)
+material = SubResource("CanvasItemMaterial_dvpwi")
+position = Vector2(-70.4994, 2)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_8w4fp")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Boost_timer" to="." method="_on_boost_timer_timeout"]

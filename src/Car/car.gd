@@ -39,7 +39,7 @@ var can_boost = true
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
-	vibration()
+	#vibration()
 	get_input()
 	apply_friction(delta)
 	calculate_steering(delta)
@@ -61,6 +61,7 @@ func get_input():
 			boost_timer.start()
 			print("boost")
 			acceleration = transform.x * (engine_power+30000)
+			animation_player.play("ani_boost")
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 		
