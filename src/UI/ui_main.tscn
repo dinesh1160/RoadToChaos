@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf305kjyv7ohy"]
+[gd_scene load_steps=4 format=3 uid="uid://cf305kjyv7ohy"]
 
 [ext_resource type="Script" path="res://src/UI/ui_main.gd" id="1_5rbux"]
 [ext_resource type="PackedScene" uid="uid://byinh3p0n1tsy" path="res://src/Game/game.tscn" id="2_cd45h"]
+[ext_resource type="Texture2D" uid="uid://dyd2etq8cy1c" path="res://assets/sand.jpg" id="3_x4a2b"]
 
 [node name="UI_main" type="Control"]
 layout_mode = 3
@@ -12,6 +13,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5rbux")
 game = ExtResource("2_cd45h")
+
+[node name="Sand" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(591, 333.5)
+scale = Vector2(2.08865, 1.17553)
+texture = ExtResource("3_x4a2b")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0

@@ -7,7 +7,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	get_input()
 	
 func _on_button_pressed():
 	get_tree().change_scene_to_packed(game)
+
+func get_input():
+	if Input.is_action_just_pressed("boost"):
+		get_tree().change_scene_to_packed(game)
+		
