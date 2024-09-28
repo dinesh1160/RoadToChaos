@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf305kjyv7ohy"]
+
+[ext_resource type="Script" path="res://src/UI/ui_main.gd" id="1_5rbux"]
+[ext_resource type="PackedScene" uid="uid://byinh3p0n1tsy" path="res://src/Game/game.tscn" id="2_cd45h"]
+
+[node name="UI_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5rbux")
+game = ExtResource("2_cd45h")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 288.0
+offset_right = 661.0
+offset_bottom = 368.0
+text = "Play"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

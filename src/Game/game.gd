@@ -17,10 +17,11 @@ func _ready() -> void:
 	Signalmanager.size_powerup.connect(Callable(car, "size_powerup"))
 	Signalmanager.druken_powerup.connect(Callable(game, "druken_powerup"))
 	Signalmanager.triple_powerup.connect(Callable(car, "triple_powerup"))
+	Signalmanager.sheild_powerup.connect(Callable(car, "sheild_powerup"))
 
 	Signalmanager.powerup_reset.connect(Callable(car, "powerup_reset"))
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	mirage.global_position = car.global_position
 
 func laugh_powerup():

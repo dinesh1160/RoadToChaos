@@ -11,7 +11,7 @@ var health = 30  #put it in the gamemanager
 @onready var boost_timer = $Boost_timer
 @onready var powerup_timer = $powerup_timer
 
-
+var sheild_power: bool = false
 var triple_power: bool = false
 @onready var target = $target
 @onready var target2 = $target2
@@ -127,9 +127,10 @@ func shoot():
 		Signalmanager.emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)
 
 func handle_hit():
-	health -= 1
-	if health<=0:
-		queue_free()
+	if sheild_power == false:
+		health -= 1
+		if health<=0:
+			queue_free()
 	print(health)
 	
 	
@@ -155,9 +156,14 @@ func triple_powerup():
 	triple_power = true
 	powerup_timer.start()
 	
+func sheild_powerup():
+	sheild_power = true
+	powerup_timer.start()
+	
 func _on_powerup_timer_timeout():
 	print("timeout")
 	if scale != Vector2(1,1):
 		scale = Vector2(1,1)
 	triple_power = false
+	sheild_power = false
 	
