@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://byinh3p0n1tsy"]
+[gd_scene load_steps=51 format=3 uid="uid://byinh3p0n1tsy"]
 
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_jkflc"]
 [ext_resource type="Script" path="res://src/Game/game.gd" id="1_nnfux"]
@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://do8k484hxqya3" path="res://src/Powerups/triple_fire.tscn" id="21_gdjdn"]
 [ext_resource type="PackedScene" uid="uid://cjxoy001lnwo3" path="res://src/Powerups/sheild.tscn" id="22_6k8g2"]
 [ext_resource type="PackedScene" uid="uid://cgac7ld2isu4w" path="res://src/Powerups/medikit.tscn" id="23_nfox3"]
+[ext_resource type="AudioStream" uid="uid://bfv2m526nvgqa" path="res://assets/Audio/theme1.mp3" id="24_171rc"]
+[ext_resource type="AudioStream" uid="uid://6flpc21ug0sh" path="res://assets/Audio/laugh.wav" id="25_r67lb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4g6k6"]
 shader = ExtResource("2_wv0ls")
@@ -45,7 +47,7 @@ shader_parameter/density = 0.497
 shader_parameter/speed = Vector2(0.01, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_ou6tc")
 
-[sub_resource type="Resource" id="Resource_5rjdl"]
+[sub_resource type="Resource" id="Resource_nu2ai"]
 script = ExtResource("2_eauxg")
 texture_idx = 0
 flip = false
@@ -56,9 +58,9 @@ script = ExtResource("3_4lnr5")
 position = Vector2(-224.604, -265.337)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_5rjdl")
+properties = SubResource("Resource_nu2ai")
 
-[sub_resource type="Resource" id="Resource_jgyj0"]
+[sub_resource type="Resource" id="Resource_4u3t6"]
 script = ExtResource("2_eauxg")
 texture_idx = 0
 flip = false
@@ -69,9 +71,9 @@ script = ExtResource("3_4lnr5")
 position = Vector2(-224.604, -265.337)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_jgyj0")
+properties = SubResource("Resource_4u3t6")
 
-[sub_resource type="Resource" id="Resource_fnup0"]
+[sub_resource type="Resource" id="Resource_x7qyp"]
 script = ExtResource("2_eauxg")
 texture_idx = 0
 flip = false
@@ -82,9 +84,9 @@ script = ExtResource("3_4lnr5")
 position = Vector2(108.101, -316.735)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_fnup0")
+properties = SubResource("Resource_x7qyp")
 
-[sub_resource type="Resource" id="Resource_a0pg1"]
+[sub_resource type="Resource" id="Resource_3rn1i"]
 script = ExtResource("2_eauxg")
 texture_idx = 0
 flip = false
@@ -95,9 +97,9 @@ script = ExtResource("3_4lnr5")
 position = Vector2(275.911, -145.928)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_a0pg1")
+properties = SubResource("Resource_3rn1i")
 
-[sub_resource type="Resource" id="Resource_evixg"]
+[sub_resource type="Resource" id="Resource_0wvao"]
 script = ExtResource("2_eauxg")
 texture_idx = 0
 flip = false
@@ -108,9 +110,9 @@ script = ExtResource("3_4lnr5")
 position = Vector2(350.827, 210.669)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_evixg")
+properties = SubResource("Resource_0wvao")
 
-[sub_resource type="Resource" id="Resource_roocp"]
+[sub_resource type="Resource" id="Resource_yolup"]
 script = ExtResource("2_eauxg")
 texture_idx = 0
 flip = false
@@ -121,9 +123,9 @@ script = ExtResource("3_4lnr5")
 position = Vector2(147.057, 438.411)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_roocp")
+properties = SubResource("Resource_yolup")
 
-[sub_resource type="Resource" id="Resource_gcxhh"]
+[sub_resource type="Resource" id="Resource_pxuaj"]
 script = ExtResource("2_eauxg")
 texture_idx = 0
 flip = false
@@ -134,9 +136,9 @@ script = ExtResource("3_4lnr5")
 position = Vector2(-206.544, 333.53)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_gcxhh")
+properties = SubResource("Resource_pxuaj")
 
-[sub_resource type="Resource" id="Resource_r12at"]
+[sub_resource type="Resource" id="Resource_pw0pc"]
 script = ExtResource("2_eauxg")
 texture_idx = 0
 flip = false
@@ -147,7 +149,7 @@ script = ExtResource("3_4lnr5")
 position = Vector2(-413.31, 144.743)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_r12at")
+properties = SubResource("Resource_pw0pc")
 
 [sub_resource type="Resource" id="Resource_4gnko"]
 script = ExtResource("4_fwykd")
@@ -272,8 +274,8 @@ shape_material = SubResource("Resource_iru11")
 position = Vector2(4, -2)
 polygon = PackedVector2Array(150, 433, 354, 206, 279, -156, 103, -327, -238, -273, -411, 140, -203, 341)
 
-[node name="Laugh" parent="." instance=ExtResource("17_rqb7r")]
-position = Vector2(719, 445)
+[node name="Laugh" parent="SS2D_Shape_Closed" instance=ExtResource("17_rqb7r")]
+position = Vector2(1378, 253)
 
 [node name="Manmy" parent="." instance=ExtResource("16_wq76j")]
 position = Vector2(683, -31)
@@ -302,5 +304,11 @@ wait_time = 10.0
 
 [node name="Medikit" parent="." instance=ExtResource("23_nfox3")]
 position = Vector2(107, 194)
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_171rc")
+
+[node name="laugh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_r67lb")
 
 [connection signal="timeout" from="powerup_timer" to="." method="_on_powerup_timer_timeout"]

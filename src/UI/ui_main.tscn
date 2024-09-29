@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf305kjyv7ohy"]
+[gd_scene load_steps=9 format=3 uid="uid://cf305kjyv7ohy"]
 
 [ext_resource type="Script" path="res://src/UI/ui_main.gd" id="1_5rbux"]
 [ext_resource type="PackedScene" uid="uid://byinh3p0n1tsy" path="res://src/Game/game.tscn" id="2_cd45h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d1jsiduqimvbf" path="res://assets/Title.png" id="4_gfv55"]
 [ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="5_br8r1"]
 [ext_resource type="PackedScene" uid="uid://dolk8k4ay3ckg" path="res://src/Car/smoke.tscn" id="6_tr4bs"]
+[ext_resource type="AudioStream" uid="uid://bfv2m526nvgqa" path="res://assets/Audio/theme1.mp3" id="7_yqab0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q6bcv"]
 
@@ -57,5 +58,8 @@ texture = ExtResource("5_br8r1")
 
 [node name="smoke" parent="." instance=ExtResource("6_tr4bs")]
 position = Vector2(462, 504)
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_yqab0")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

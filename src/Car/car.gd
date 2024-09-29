@@ -18,6 +18,7 @@ var triple_power: bool = false
 
 @onready var healthbar = $CanvasLayer/Healthbar
 
+@onready var trottlesound = $Trottlesound
 
 
 var wheel_base = 30  # Distance from front to rear wheel
@@ -37,11 +38,15 @@ var traction_slow = 10  #Low-speed traction
 var acceleration = Vector2.ZERO
 var steer_direction
 var can_boost = true
+var can_trottle = true
 
 func _ready():
 	healthbar.init_health(health)
 
 func _physics_process(delta):
+	if !trottlesound.playing:
+		trottlesound.play()
+	
 	acceleration = Vector2.ZERO
 	#vibration()
 	get_input()
@@ -49,16 +54,20 @@ func _physics_process(delta):
 	calculate_steering(delta)
 	velocity += acceleration * delta
 	move_and_slide()
-
-
+	
 	
 func get_input():
 	var turn = Input.get_axis("left", "right")
 	steer_direction = turn * deg_to_rad(steering_angle)
+	
 	if Input.is_action_pressed("front"):
 		acceleration = transform.x * engine_power
+		
 	if Input.is_action_pressed("back"):
 		acceleration = transform.x * braking
+		
+		
+		
 	if can_boost == true:
 		if Input.is_action_pressed("boost"):
 			can_boost = false
@@ -104,11 +113,7 @@ func vibration():
 		return
 	else:
 		animation_player.play("vibrate")
-	
-#func _unhandled_input(event):
-	#if Input.is_action_just_pressed("shoot"):
-		#shoot()
-	
+		
 func triple_shoot():
 	var bullet_instance = Bullet.instantiate()
 	var direction = end_of_gun.global_position.direction_to(target.global_position).normalized()  #finds the direction using another marker2d called target

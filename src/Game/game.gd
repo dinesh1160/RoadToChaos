@@ -7,7 +7,10 @@ extends Node2D
 @onready var mirage = $Mirage
 @onready var color_rect = $Mirage/CanvasLayer/ColorRect
 @onready var powerup_timer = $powerup_timer
+@onready var bgmusic = $bgmusic
+@onready var laugh = $laugh
 
+var can_laugh = false
 
 func _ready() -> void:
 	randomize()
@@ -19,14 +22,16 @@ func _ready() -> void:
 	Signalmanager.triple_powerup.connect(Callable(car, "triple_powerup"))
 	Signalmanager.sheild_powerup.connect(Callable(car, "sheild_powerup"))
 	Signalmanager.medic_powerup.connect(Callable(car, "medic_powerup"))
-
 	Signalmanager.powerup_reset.connect(Callable(car, "powerup_reset"))
 	
 func _physics_process(_delta):
+	if !bgmusic.playing:
+		bgmusic.play()
 	mirage.global_position = car.global_position
 
 func laugh_powerup():
-	print("laugh")
+	laugh.play()
+	bgmusic.stop()
 
 func druken_powerup():
 	powerup_timer.start()
@@ -36,3 +41,4 @@ func druken_powerup():
 func _on_powerup_timer_timeout():
 	if color_rect.visible == true:
 		color_rect.visible = false
+

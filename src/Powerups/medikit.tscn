@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgac7ld2isu4w"]
+[gd_scene load_steps=7 format=3 uid="uid://cgac7ld2isu4w"]
 
 [ext_resource type="Script" path="res://Medikit.gd" id="1_xmsow"]
 [ext_resource type="Texture2D" uid="uid://byy55aiw2o3v2" path="res://assets/powerups1.png" id="2_v3c4w"]
@@ -10,11 +10,18 @@ radius = 11.0
 atlas = ExtResource("2_v3c4w")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ytvx"]
+atlas = ExtResource("2_v3c4w")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_sgqcl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mjd5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ytvx")
 }],
 "loop": true,
 "name": &"default",

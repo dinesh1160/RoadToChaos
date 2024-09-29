@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw5gsupjtfscf"]
+
+[ext_resource type="AudioStream" uid="uid://detrpiq3740lh" path="res://assets/Audio/porsche-105500.mp3" id="1_bh2vs"]
+
+[node name="AudioSystem" type="AudioStreamPlayer"]
+stream = ExtResource("1_bh2vs")

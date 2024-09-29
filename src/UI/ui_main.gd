@@ -1,4 +1,5 @@
 extends Control
+@onready var bgmusic = $bgmusic
 
 @onready var smoke = $smoke
 @export var game : PackedScene
@@ -10,6 +11,8 @@ func _ready():
 func _process(delta):
 	get_input()
 	smoke.global_position = get_global_mouse_position()
+	if !bgmusic.playing:
+		bgmusic.play()
 	
 	
 func _on_button_pressed():
