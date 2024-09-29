@@ -168,6 +168,9 @@ func sheild_powerup():
 	sheild_power = true
 	powerup_timer.start()
 	
+func medic_powerup():
+	health += 30
+	
 func _on_powerup_timer_timeout():
 	print("timeout")
 	if scale != Vector2(1,1):

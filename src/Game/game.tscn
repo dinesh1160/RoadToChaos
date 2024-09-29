@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://byinh3p0n1tsy"]
+[gd_scene load_steps=49 format=3 uid="uid://byinh3p0n1tsy"]
 
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_jkflc"]
 [ext_resource type="Script" path="res://src/Game/game.gd" id="1_nnfux"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cqn6821ftbsyf" path="res://src/Powerups/drunken.tscn" id="20_3hncb"]
 [ext_resource type="PackedScene" uid="uid://do8k484hxqya3" path="res://src/Powerups/triple_fire.tscn" id="21_gdjdn"]
 [ext_resource type="PackedScene" uid="uid://cjxoy001lnwo3" path="res://src/Powerups/sheild.tscn" id="22_6k8g2"]
+[ext_resource type="PackedScene" uid="uid://cgac7ld2isu4w" path="res://src/Powerups/medikit.tscn" id="23_nfox3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4g6k6"]
 shader = ExtResource("2_wv0ls")
@@ -298,5 +299,8 @@ position = Vector2(811, 721)
 
 [node name="powerup_timer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="Medikit" parent="." instance=ExtResource("23_nfox3")]
+position = Vector2(107, 194)
 
 [connection signal="timeout" from="powerup_timer" to="." method="_on_powerup_timer_timeout"]

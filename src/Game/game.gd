@@ -18,6 +18,7 @@ func _ready() -> void:
 	Signalmanager.druken_powerup.connect(Callable(game, "druken_powerup"))
 	Signalmanager.triple_powerup.connect(Callable(car, "triple_powerup"))
 	Signalmanager.sheild_powerup.connect(Callable(car, "sheild_powerup"))
+	Signalmanager.medic_powerup.connect(Callable(car, "medic_powerup"))
 
 	Signalmanager.powerup_reset.connect(Callable(car, "powerup_reset"))
 	
