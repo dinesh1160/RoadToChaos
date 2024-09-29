@@ -28,7 +28,7 @@ script = ExtResource("1_nnj3c")
 shape = SubResource("CircleShape2D_y8nha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_4waph")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

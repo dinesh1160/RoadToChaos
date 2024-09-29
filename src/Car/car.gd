@@ -4,6 +4,7 @@ class_name Car
 var health = 30  #put it in the gamemanager
 
 @onready var animation_player = $AnimationPlayer
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 @export var Bullet : PackedScene
 @onready var end_of_gun = $EndOfGun
@@ -19,6 +20,7 @@ var triple_power: bool = false
 @onready var healthbar = $CanvasLayer/Healthbar
 
 @onready var trottlesound = $Trottlesound
+@onready var cling = $cling
 
 
 var wheel_base = 30  # Distance from front to rear wheel
@@ -167,17 +169,25 @@ func size_powerup():
 	
 func triple_powerup():
 	triple_power = true
+	cling.play()
 	powerup_timer.start()
 	
 func sheild_powerup():
 	sheild_power = true
 	powerup_timer.start()
+	animated_sprite_2d.play("sheild")
+	cling.play()
 	
 func medic_powerup():
 	health += 30
+	cling.play()
+	
+func laugh_powerup():
+	animated_sprite_2d.play("ribbon")	
 	
 func _on_powerup_timer_timeout():
 	print("timeout")
+	animated_sprite_2d.play("default")
 	if scale != Vector2(1,1):
 		scale = Vector2(1,1)
 	triple_power = false

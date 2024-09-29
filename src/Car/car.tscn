@@ -1,39 +1,67 @@
-[gd_scene load_steps=16 format=3 uid="uid://bhhit7xi1deji"]
+[gd_scene load_steps=22 format=3 uid="uid://bhhit7xi1deji"]
 
-[ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="1_1koar"]
 [ext_resource type="Script" path="res://src/Car/car.gd" id="1_x62rg"]
 [ext_resource type="PackedScene" uid="uid://h6i7k3hfykvk" path="res://src/Car/bullet.tscn" id="2_60j46"]
 [ext_resource type="PackedScene" uid="uid://c2h2kwufsa1gx" path="res://src/Car/trail.tscn" id="3_febys"]
+[ext_resource type="Texture2D" uid="uid://bogfeipiiexnu" path="res://assets/carSheet1.png" id="3_vnjag"]
 [ext_resource type="PackedScene" uid="uid://dolk8k4ay3ckg" path="res://src/Car/smoke.tscn" id="5_luv2u"]
 [ext_resource type="Texture2D" uid="uid://bklrryp5baqei" path="res://assets/spotlight_2.png" id="6_8w4fp"]
 [ext_resource type="PackedScene" uid="uid://bi3gl2w444dc4" path="res://src/UI/healthbar.tscn" id="7_t8ay4"]
 [ext_resource type="AudioStream" uid="uid://d0ngt6nvw1hqa" path="res://assets/Audio/engine.wav" id="8_26d71"]
+[ext_resource type="AudioStream" uid="uid://otyoq5h0p8mb" path="res://assets/Audio/glass-cling-01-103677.mp3" id="9_s20ko"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tbqi"]
 radius = 26.0
 height = 130.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye534"]
+atlas = ExtResource("3_vnjag")
+region = Rect2(0, 0, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywphw"]
+atlas = ExtResource("3_vnjag")
+region = Rect2(96, 0, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ylgm"]
+atlas = ExtResource("3_vnjag")
+region = Rect2(192, 0, 96, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbebj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye534")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywphw")
+}],
+"loop": true,
+"name": &"ribbon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ylgm")
+}],
+"loop": true,
+"name": &"sheild",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_5vnbw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Car-sheet:position")
+tracks/0/path = NodePath("Spotlight2:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Spotlight2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -60,23 +88,15 @@ tracks/0/keys = {
 resource_name = "vibrate"
 length = 0.4
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Car-sheet:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0.5), Vector2(0, 0), Vector2(0, -0.05), Vector2(0, 0)]
-}
+
+[sub_resource type="Animation" id="Animation_qnajw"]
+resource_name = "ribbon"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mayjl"]
 _data = {
 "RESET": SubResource("Animation_5vnbw"),
 "ani_boost": SubResource("Animation_21h5j"),
+"ribbon": SubResource("Animation_qnajw"),
 "vibrate": SubResource("Animation_wbnjl")
 }
 
@@ -91,15 +111,14 @@ top_level = true
 script = ExtResource("1_x62rg")
 Bullet = ExtResource("2_60j46")
 
-[node name="Car-sheet" type="Sprite2D" parent="."]
-z_index = 1
-texture_filter = 1
-rotation = 1.5708
-texture = ExtResource("1_1koar")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3tbqi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_wbebj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
@@ -168,6 +187,7 @@ texture = ExtResource("6_8w4fp")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Healthbar" parent="CanvasLayer" instance=ExtResource("7_t8ay4")]
+visible = false
 offset_left = 10.0
 offset_top = 13.0
 offset_right = 279.0
@@ -176,6 +196,10 @@ size_flags_horizontal = 0
 
 [node name="Trottlesound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_26d71")
+
+[node name="cling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_s20ko")
+volume_db = -10.0
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Boost_timer" to="." method="_on_boost_timer_timeout"]

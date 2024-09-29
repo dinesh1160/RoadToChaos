@@ -29,7 +29,7 @@ shape = SubResource("CircleShape2D_y8nha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1.99813, 2)
+scale = Vector2(2.497, 2.5)
 sprite_frames = SubResource("SpriteFrames_t4p72")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
