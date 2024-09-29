@@ -1,21 +1,22 @@
 extends CharacterBody2D
 class_name Car
 
-#signal fired_bullet(bullet, position,direction)
-
 var health = 30  #put it in the gamemanager
 
 @onready var animation_player = $AnimationPlayer
+
 @export var Bullet : PackedScene
 @onready var end_of_gun = $EndOfGun
 @onready var boost_timer = $Boost_timer
-@onready var powerup_timer = $powerup_timer
 
+@onready var powerup_timer = $powerup_timer
 var sheild_power: bool = false
 var triple_power: bool = false
 @onready var target = $target
 @onready var target2 = $target2
 @onready var target3 = $target3
+
+@onready var healthbar = $CanvasLayer/Healthbar
 
 
 
@@ -36,6 +37,9 @@ var traction_slow = 10  #Low-speed traction
 var acceleration = Vector2.ZERO
 var steer_direction
 var can_boost = true
+
+func _ready():
+	healthbar.init_health(health)
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
@@ -128,11 +132,14 @@ func shoot():
 		Signalmanager.emit_signal("fired_bullet",bullet_instance,end_of_gun.global_position,direction)
 
 func handle_hit():
+	
 	if sheild_power == false:
 		health -= 1
+		
 		if health<=0:
 			queue_free()
 	print(health)
+	healthbar.set_health(health)
 	
 	
 func _on_boost_timer_timeout():

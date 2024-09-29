@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhhit7xi1deji"]
+[gd_scene load_steps=15 format=3 uid="uid://bhhit7xi1deji"]
 
 [ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="1_1koar"]
 [ext_resource type="Script" path="res://src/Car/car.gd" id="1_x62rg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c2h2kwufsa1gx" path="res://src/Car/trail.tscn" id="3_febys"]
 [ext_resource type="PackedScene" uid="uid://dolk8k4ay3ckg" path="res://src/Car/smoke.tscn" id="5_luv2u"]
 [ext_resource type="Texture2D" uid="uid://bklrryp5baqei" path="res://assets/spotlight_2.png" id="6_8w4fp"]
+[ext_resource type="PackedScene" uid="uid://bi3gl2w444dc4" path="res://src/UI/healthbar.tscn" id="7_t8ay4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tbqi"]
 radius = 26.0
@@ -38,6 +39,22 @@ tracks/1/keys = {
 "values": [Vector2(1e-05, 1e-05)]
 }
 
+[sub_resource type="Animation" id="Animation_21h5j"]
+resource_name = "ani_boost"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spotlight2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.00136e-05, 1.00136e-05), Vector2(0.675781, 0.703125), Vector2(1.00136e-05, 1.00136e-05)]
+}
+
 [sub_resource type="Animation" id="Animation_wbnjl"]
 resource_name = "vibrate"
 length = 0.4
@@ -53,22 +70,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0.5), Vector2(0, 0), Vector2(0, -0.05), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_21h5j"]
-resource_name = "ani_boost"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Spotlight2:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1.00136e-05, 1.00136e-05), Vector2(0.675781, 0.703125), Vector2(1.00136e-05, 1.00136e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mayjl"]
@@ -162,6 +163,15 @@ material = SubResource("CanvasItemMaterial_dvpwi")
 position = Vector2(-70.4994, 2)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_8w4fp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("7_t8ay4")]
+offset_left = 10.0
+offset_top = 13.0
+offset_right = 279.0
+offset_bottom = 24.0
+size_flags_horizontal = 0
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Boost_timer" to="." method="_on_boost_timer_timeout"]

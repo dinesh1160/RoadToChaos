@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf305kjyv7ohy"]
+[gd_scene load_steps=8 format=3 uid="uid://cf305kjyv7ohy"]
 
 [ext_resource type="Script" path="res://src/UI/ui_main.gd" id="1_5rbux"]
 [ext_resource type="PackedScene" uid="uid://byinh3p0n1tsy" path="res://src/Game/game.tscn" id="2_cd45h"]
 [ext_resource type="Texture2D" uid="uid://dyd2etq8cy1c" path="res://assets/sand.jpg" id="3_x4a2b"]
+[ext_resource type="Texture2D" uid="uid://d1jsiduqimvbf" path="res://assets/Title.png" id="4_gfv55"]
+[ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="5_br8r1"]
+[ext_resource type="PackedScene" uid="uid://dolk8k4ay3ckg" path="res://src/Car/smoke.tscn" id="6_tr4bs"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q6bcv"]
 
 [node name="UI_main" type="Control"]
 layout_mode = 3
@@ -15,17 +20,42 @@ script = ExtResource("1_5rbux")
 game = ExtResource("2_cd45h")
 
 [node name="Sand" type="Sprite2D" parent="."]
+modulate = Color(0.602687, 0.525643, 0.402372, 1)
 texture_filter = 1
-position = Vector2(591, 333.5)
+position = Vector2(579, 328)
 scale = Vector2(2.08865, 1.17553)
 texture = ExtResource("3_x4a2b")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 469.0
-offset_top = 288.0
-offset_right = 661.0
-offset_bottom = 368.0
+offset_left = 557.0
+offset_top = 414.0
+offset_right = 710.0
+offset_bottom = 491.0
 text = "Play"
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(377, 330)
+scale = Vector2(1.36201, 1.42366)
+texture = ExtResource("4_gfv55")
+
+[node name="Car-sheet2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_q6bcv")
+position = Vector2(830, 244)
+rotation = -0.861307
+scale = Vector2(1.68726, 1.68726)
+texture = ExtResource("5_br8r1")
+
+[node name="Car-sheet" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(832, 232)
+rotation = -0.861307
+scale = Vector2(1.68726, 1.68726)
+texture = ExtResource("5_br8r1")
+
+[node name="smoke" parent="." instance=ExtResource("6_tr4bs")]
+position = Vector2(462, 504)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

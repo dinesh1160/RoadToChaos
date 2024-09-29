@@ -1,22 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5c6hnej1s84g"]
+[gd_scene load_steps=6 format=3 uid="uid://b5c6hnej1s84g"]
 
 [ext_resource type="Script" path="res://src/Powerups/size.gd" id="1_ne86y"]
+[ext_resource type="Texture2D" uid="uid://byy55aiw2o3v2" path="res://assets/powerups1.png" id="2_28tgt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y8nha"]
 radius = 11.0
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_21d41"]
-size = Vector2(2, 6)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp1tt"]
+atlas = ExtResource("2_28tgt")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sgqcl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp1tt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="size" type="Area2D"]
+rotation = -0.00174533
 script = ExtResource("1_ne86y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y8nha")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.78814e-07, 0.5)
-scale = Vector2(4, 2.16667)
-texture = SubResource("PlaceholderTexture2D_21d41")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sgqcl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
