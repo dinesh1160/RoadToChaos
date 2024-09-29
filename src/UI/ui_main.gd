@@ -2,7 +2,7 @@ extends Control
 @onready var bgmusic = $bgmusic
 
 @onready var smoke = $smoke
-@export var game : PackedScene
+@export var level1 : PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -16,9 +16,9 @@ func _process(delta):
 	
 	
 func _on_button_pressed():
-	get_tree().change_scene_to_packed(game)
+	get_tree().change_scene_to_packed(level1)
 
 func get_input():
 	if Input.is_action_just_pressed("boost"):
-		get_tree().change_scene_to_packed(game)
+		get_tree().change_scene_to_packed(level1)
 		

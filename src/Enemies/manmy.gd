@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 class_name Enemy
+@onready var audio_stream_player = $AudioStreamPlayer
 
 @onready var attack_timer = $Attack_timer
 @onready var patrol_timer = $Patrol_timer
@@ -13,6 +14,9 @@ var health = 5
 var engage = false
 var can_attack = true
 var can_patrol = true
+@onready var blood = $Blood
+@onready var sprite_2d = $Sprite2D
+@onready var area_2d = $Area2D
 
 #patrol
 var origin : Vector2 = Vector2.ZERO
@@ -42,9 +46,12 @@ func _physics_process(delta):
 			shoot()
 
 func handle_hit():
-	
+	audio_stream_player.play()
 	health -= 1
 	if(health<=0):
+		sprite_2d.visible = false
+		blood.visible = true
+		set_physics_process(false)
 		queue_free()
 	print(health)
 	

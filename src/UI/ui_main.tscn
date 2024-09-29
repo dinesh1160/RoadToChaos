@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cf305kjyv7ohy"]
 
 [ext_resource type="Script" path="res://src/UI/ui_main.gd" id="1_5rbux"]
-[ext_resource type="PackedScene" uid="uid://byinh3p0n1tsy" path="res://src/Game/game.tscn" id="2_cd45h"]
+[ext_resource type="PackedScene" uid="uid://b3eljqcg30lfb" path="res://src/Game/game1.tscn" id="2_1n1fp"]
 [ext_resource type="Texture2D" uid="uid://dyd2etq8cy1c" path="res://assets/sand.jpg" id="3_x4a2b"]
 [ext_resource type="Texture2D" uid="uid://d1jsiduqimvbf" path="res://assets/Title.png" id="4_gfv55"]
 [ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="5_br8r1"]
@@ -18,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5rbux")
-game = ExtResource("2_cd45h")
+level1 = ExtResource("2_1n1fp")
 
 [node name="Sand" type="Sprite2D" parent="."]
 modulate = Color(0.602687, 0.525643, 0.402372, 1)

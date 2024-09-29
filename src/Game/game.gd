@@ -13,6 +13,9 @@ extends Node2D
 
 var can_laugh = false
 
+@export var level2 : PackedScene
+@export var blood : PackedScene
+
 func _ready() -> void:
 	randomize()
 	color_rect.visible = false
@@ -24,7 +27,7 @@ func _ready() -> void:
 	Signalmanager.triple_powerup.connect(Callable(car, "triple_powerup"))
 	Signalmanager.sheild_powerup.connect(Callable(car, "sheild_powerup"))
 	Signalmanager.medic_powerup.connect(Callable(car, "medic_powerup"))
-
+	
 	Signalmanager.powerup_reset.connect(Callable(car, "powerup_reset"))
 	
 func _physics_process(_delta):
@@ -54,3 +57,8 @@ func _on_laugh_finished():
 	can_laugh = false
 
 
+	
+
+func _on_finish_line_body_entered(body):
+	if body.is_in_group("car"):
+		get_tree().change_scene_to_packed(level2)

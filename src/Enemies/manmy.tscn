@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn2712wtyy3an"]
+[gd_scene load_steps=10 format=3 uid="uid://dn2712wtyy3an"]
 
 [ext_resource type="Texture2D" uid="uid://b7an4p7rr1jkn" path="res://assets/enemy.png" id="1_syph8"]
 [ext_resource type="Script" path="res://src/Enemies/manmy.gd" id="1_t0h41"]
 [ext_resource type="PackedScene" uid="uid://cui4op1vwgtbl" path="res://src/Enemies/offscreen_indicator.tscn" id="4_3yoer"]
 [ext_resource type="PackedScene" uid="uid://h6i7k3hfykvk" path="res://src/Car/bullet.tscn" id="4_bqg2s"]
+[ext_resource type="AudioStream" uid="uid://beampk66ptmjw" path="res://assets/Audio/cartoon-scream-1-6835.mp3" id="5_l13sl"]
+[ext_resource type="Texture2D" uid="uid://bydkfp07olo4c" path="res://assets/blood.png" id="6_2yl46"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_107of"]
 radius = 1.85185
@@ -50,6 +52,13 @@ wait_time = 2.0
 autostart = true
 
 [node name="Offscreen_Indicator" parent="." instance=ExtResource("4_3yoer")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_l13sl")
+
+[node name="Blood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_2yl46")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
