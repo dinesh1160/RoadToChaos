@@ -30,7 +30,6 @@ func set_direction(direction: Vector2):
 func _on_kill_timer_timeout():
 	queue_free()
 
-
 func bullet_hit():
 	smoketrail.stop()
 	speed = 0
@@ -40,3 +39,8 @@ func bullet_hit():
 func _on_hit_vanish_timer_timeout():
 	queue_free()
 	
+
+
+func _on_body_entered(body):
+	if body.is_in_group("walls"):
+		bullet_hit()

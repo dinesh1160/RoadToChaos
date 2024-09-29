@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://h6i7k3hfykvk"]
+[gd_scene load_steps=13 format=3 uid="uid://h6i7k3hfykvk"]
 
 [ext_resource type="Script" path="res://src/Car/bullet.gd" id="1_8b67v"]
 [ext_resource type="PackedScene" uid="uid://mliv7ptwc5kp" path="res://src/Car/smoketrail.tscn" id="2_eaava"]
 [ext_resource type="Texture2D" uid="uid://bklrryp5baqei" path="res://assets/spotlight_2.png" id="3_fvi3j"]
-[ext_resource type="AudioStream" uid="uid://cxv7aggw2kr5d" path="res://assets/Audio/gunshot.wav" id="4_tka8f"]
+[ext_resource type="AudioStream" uid="uid://c71hvcmlls6ru" path="res://assets/Audio/gunfire.wav" id="4_mcm4j"]
+[ext_resource type="AudioStream" uid="uid://cp2i8hrho4v74" path="res://assets/Audio/bullethit.wav" id="5_qlwrd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1a43p"]
-size = Vector2(3.5, 3.5)
+size = Vector2(2.75, 2.75)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ej4oh"]
 
@@ -101,8 +102,16 @@ texture = ExtResource("3_fvi3j")
 wait_time = 0.5
 
 [node name="BulletSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_tka8f")
+stream = ExtResource("4_mcm4j")
+volume_db = -10.0
 pitch_scale = 0.7
+mix_target = 1
+
+[node name="explosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qlwrd")
+volume_db = -10.0
+pitch_scale = 0.7
+mix_target = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

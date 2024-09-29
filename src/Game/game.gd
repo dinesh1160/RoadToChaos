@@ -52,3 +52,5 @@ func _on_powerup_timer_timeout():
 func _on_laugh_finished():
 	bgmusic.volume_db = 0
 	can_laugh = false
+
+

@@ -1,28 +1,11 @@
-[gd_scene load_steps=52 format=3 uid="uid://byinh3p0n1tsy"]
+[gd_scene load_steps=14 format=3 uid="uid://byinh3p0n1tsy"]
 
-[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_jkflc"]
 [ext_resource type="Script" path="res://src/Game/game.gd" id="1_nnfux"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_eauxg"]
 [ext_resource type="Shader" path="res://src/mirage.gdshader" id="2_wv0ls"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_4lnr5"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_fwykd"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material.gd" id="5_8ugqj"]
-[ext_resource type="Texture2D" uid="uid://dyapekw52dvbx" path="res://assets/border.png" id="6_nc73g"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="7_fs7ux"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="8_m0cus"]
-[ext_resource type="Texture2D" uid="uid://cyld4vnl1w32x" path="res://assets/_.jpeg" id="10_18aij"]
 [ext_resource type="Shader" path="res://src/Game/game.gdshader" id="11_4l6u0"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="11_i2kns"]
 [ext_resource type="PackedScene" uid="uid://bhhit7xi1deji" path="res://src/Car/car.tscn" id="12_70pfm"]
 [ext_resource type="Texture2D" uid="uid://dyd2etq8cy1c" path="res://assets/sand.jpg" id="13_h2j83"]
 [ext_resource type="Script" path="res://src/Game/BulletManger.gd" id="15_3xskd"]
-[ext_resource type="PackedScene" uid="uid://dn2712wtyy3an" path="res://src/Enemies/manmy.tscn" id="16_wq76j"]
-[ext_resource type="PackedScene" uid="uid://bbcgbhm2juigb" path="res://src/Powerups/laugh.tscn" id="17_rqb7r"]
-[ext_resource type="PackedScene" uid="uid://b5c6hnej1s84g" path="res://src/Powerups/size.tscn" id="18_vyo3v"]
-[ext_resource type="PackedScene" uid="uid://cqn6821ftbsyf" path="res://src/Powerups/drunken.tscn" id="20_3hncb"]
-[ext_resource type="PackedScene" uid="uid://do8k484hxqya3" path="res://src/Powerups/triple_fire.tscn" id="21_gdjdn"]
-[ext_resource type="PackedScene" uid="uid://cjxoy001lnwo3" path="res://src/Powerups/sheild.tscn" id="22_6k8g2"]
-[ext_resource type="PackedScene" uid="uid://cgac7ld2isu4w" path="res://src/Powerups/medikit.tscn" id="23_nfox3"]
 [ext_resource type="AudioStream" uid="uid://bfv2m526nvgqa" path="res://assets/Audio/theme1.mp3" id="24_171rc"]
 [ext_resource type="AudioStream" uid="uid://6flpc21ug0sh" path="res://assets/Audio/laugh.wav" id="25_r67lb"]
 [ext_resource type="AudioStream" uid="uid://otyoq5h0p8mb" path="res://assets/Audio/glass-cling-01-103677.mp3" id="26_bnxx2"]
@@ -47,171 +30,6 @@ shader = ExtResource("11_4l6u0")
 shader_parameter/density = 0.497
 shader_parameter/speed = Vector2(0.01, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_ou6tc")
-
-[sub_resource type="Resource" id="Resource_2isli"]
-script = ExtResource("2_eauxg")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_eo7mb"]
-script = ExtResource("3_4lnr5")
-position = Vector2(-224.604, -265.337)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_2isli")
-
-[sub_resource type="Resource" id="Resource_a0sqv"]
-script = ExtResource("2_eauxg")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_yl71n"]
-script = ExtResource("3_4lnr5")
-position = Vector2(-224.604, -265.337)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_a0sqv")
-
-[sub_resource type="Resource" id="Resource_cyxvq"]
-script = ExtResource("2_eauxg")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_dsreb"]
-script = ExtResource("3_4lnr5")
-position = Vector2(108.101, -316.735)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_cyxvq")
-
-[sub_resource type="Resource" id="Resource_jar4p"]
-script = ExtResource("2_eauxg")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_l8g4t"]
-script = ExtResource("3_4lnr5")
-position = Vector2(275.911, -145.928)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_jar4p")
-
-[sub_resource type="Resource" id="Resource_fywxl"]
-script = ExtResource("2_eauxg")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_vp1p5"]
-script = ExtResource("3_4lnr5")
-position = Vector2(350.827, 210.669)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_fywxl")
-
-[sub_resource type="Resource" id="Resource_lne2x"]
-script = ExtResource("2_eauxg")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_k8f2s"]
-script = ExtResource("3_4lnr5")
-position = Vector2(147.057, 438.411)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_lne2x")
-
-[sub_resource type="Resource" id="Resource_jcrm6"]
-script = ExtResource("2_eauxg")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_2b5m5"]
-script = ExtResource("3_4lnr5")
-position = Vector2(-206.544, 333.53)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_jcrm6")
-
-[sub_resource type="Resource" id="Resource_hpwnh"]
-script = ExtResource("2_eauxg")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_qt8ul"]
-script = ExtResource("3_4lnr5")
-position = Vector2(-413.31, 144.743)
-point_in = Vector2(0, 0)
-point_out = Vector2(0, 0)
-properties = SubResource("Resource_hpwnh")
-
-[sub_resource type="Resource" id="Resource_4gnko"]
-script = ExtResource("4_fwykd")
-_points = {
-0: SubResource("Resource_eo7mb"),
-18: SubResource("Resource_yl71n"),
-23: SubResource("Resource_dsreb"),
-24: SubResource("Resource_l8g4t"),
-25: SubResource("Resource_vp1p5"),
-26: SubResource("Resource_k8f2s"),
-27: SubResource("Resource_2b5m5"),
-28: SubResource("Resource_qt8ul")
-}
-_point_order = Array[int]([18, 23, 24, 25, 26, 27, 28, 0])
-_constraints = {
-Array[int]([18, 0]): 15
-}
-_next_key = 29
-_material_overrides = {}
-
-[sub_resource type="Resource" id="Resource_k0ad0"]
-script = ExtResource("5_8ugqj")
-textures = Array[Texture2D]([ExtResource("6_nc73g")])
-textures_corner_outer = Array[Texture2D]([])
-textures_corner_inner = Array[Texture2D]([])
-textures_taper_left = Array[Texture2D]([])
-textures_taper_right = Array[Texture2D]([])
-randomize_texture = false
-use_corner_texture = true
-use_taper_texture = true
-fit_mode = 0
-
-[sub_resource type="Resource" id="Resource_ime0n"]
-script = ExtResource("7_fs7ux")
-begin = 0.0
-distance = 360.0
-edgeRendering = Vector2(0, 0)
-
-[sub_resource type="Resource" id="Resource_vml2s"]
-script = ExtResource("8_m0cus")
-edge_material = SubResource("Resource_k0ad0")
-normal_range = SubResource("Resource_ime0n")
-weld = true
-render = true
-z_index = 0
-z_as_relative = true
-offset = 0.8
-
-[sub_resource type="Resource" id="Resource_iru11"]
-script = ExtResource("11_i2kns")
-_edge_meta_materials = Array[ExtResource("8_m0cus")]([SubResource("Resource_vml2s")])
-fill_textures = Array[Texture2D]([ExtResource("10_18aij")])
-fill_texture_z_index = -1
-fill_texture_show_behind_parent = false
-fill_texture_scale = 1.0
-fill_texture_absolute_position = false
-fill_texture_absolute_rotation = false
-fill_texture_offset = Vector2(0, 0)
-fill_texture_angle_offset = 0.0
-fill_mesh_offset = 0.0
-render_offset = 0.0
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_nnfux")
@@ -263,48 +81,8 @@ position = Vector2(828, 614)
 position = Vector2(1, -1)
 script = ExtResource("15_3xskd")
 
-[node name="SS2D_Shape_Closed" type="Node2D" parent="."]
-position = Vector2(-659, 192)
-script = ExtResource("1_jkflc")
-_points = SubResource("Resource_4gnko")
-shape_material = SubResource("Resource_iru11")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="SS2D_Shape_Closed"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SS2D_Shape_Closed/StaticBody2D"]
-position = Vector2(4, -2)
-polygon = PackedVector2Array(150, 433, 354, 206, 279, -156, 103, -327, -238, -273, -411, 140, -203, 341)
-
-[node name="Laugh" parent="SS2D_Shape_Closed" instance=ExtResource("17_rqb7r")]
-position = Vector2(1378, 253)
-
-[node name="Manmy" parent="." instance=ExtResource("16_wq76j")]
-position = Vector2(686, -62)
-
-[node name="Manmy2" parent="." instance=ExtResource("16_wq76j")]
-position = Vector2(1294, 264)
-
-[node name="Manmy3" parent="." instance=ExtResource("16_wq76j")]
-position = Vector2(270, 760)
-rotation = -2.26618
-
-[node name="size" parent="." instance=ExtResource("18_vyo3v")]
-position = Vector2(181, 1294)
-
-[node name="drunken" parent="." instance=ExtResource("20_3hncb")]
-position = Vector2(112, 85)
-
-[node name="triple fire" parent="." instance=ExtResource("21_gdjdn")]
-position = Vector2(803, 72)
-
-[node name="Sheild" parent="." instance=ExtResource("22_6k8g2")]
-position = Vector2(811, 721)
-
 [node name="powerup_timer" type="Timer" parent="."]
 wait_time = 10.0
-
-[node name="Medikit" parent="." instance=ExtResource("23_nfox3")]
-position = Vector2(107, 194)
 
 [node name="bgmusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_171rc")
