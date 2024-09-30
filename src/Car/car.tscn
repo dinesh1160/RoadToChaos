@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhhit7xi1deji"]
+[gd_scene load_steps=23 format=3 uid="uid://bhhit7xi1deji"]
 
 [ext_resource type="Texture2D" uid="uid://4322tpl4tgqs" path="res://assets/car-Sheet.png" id="1_1koar"]
 [ext_resource type="Script" path="res://src/Car/car.gd" id="1_x62rg"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bi3gl2w444dc4" path="res://src/UI/healthbar.tscn" id="7_t8ay4"]
 [ext_resource type="AudioStream" uid="uid://d0ngt6nvw1hqa" path="res://assets/Audio/engine.wav" id="8_26d71"]
 [ext_resource type="AudioStream" uid="uid://otyoq5h0p8mb" path="res://assets/Audio/glass-cling-01-103677.mp3" id="9_s20ko"]
+[ext_resource type="Texture2D" uid="uid://xf8e85ov4bkh" path="res://assets/focus.png" id="10_0umtb"]
+[ext_resource type="Texture2D" uid="uid://bogfeipiiexnu" path="res://assets/carSheet1.png" id="11_bjtpv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tbqi"]
 radius = 26.0
@@ -87,13 +89,52 @@ size = Vector2(107, 42)
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dvpwi"]
 blend_mode = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wc10"]
+atlas = ExtResource("11_bjtpv")
+region = Rect2(0, 0, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gac51"]
+atlas = ExtResource("11_bjtpv")
+region = Rect2(96, 0, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb7iw"]
+atlas = ExtResource("11_bjtpv")
+region = Rect2(192, 0, 96, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyfyb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wc10")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gac51")
+}],
+"loop": true,
+"name": &"ribbon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb7iw")
+}],
+"loop": true,
+"name": &"sheild",
+"speed": 5.0
+}]
+
 [node name="Car" type="CharacterBody2D" groups=["car"]]
 top_level = true
+z_index = -1
 script = ExtResource("1_x62rg")
 Bullet = ExtResource("2_60j46")
 
 [node name="Car-sheet" type="Sprite2D" parent="."]
-z_index = 1
 texture_filter = 1
 rotation = 1.5708
 texture = ExtResource("1_1koar")
@@ -183,6 +224,21 @@ stream = ExtResource("9_s20ko")
 volume_db = -10.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 2
+position = Vector2(262, -25)
+rotation = 0.495589
+scale = Vector2(0.558645, 0.268384)
+texture = ExtResource("10_0umtb")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(255, 47)
+rotation = 0.736908
+scale = Vector2(0.558645, 0.268384)
+texture = ExtResource("10_0umtb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_jyfyb")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Boost_timer" to="." method="_on_boost_timer_timeout"]

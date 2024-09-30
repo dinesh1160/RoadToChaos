@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://byinh3p0n1tsy"]
+[gd_scene load_steps=16 format=3 uid="uid://byinh3p0n1tsy"]
 
 [ext_resource type="Script" path="res://src/Game/game.gd" id="1_nnfux"]
+[ext_resource type="PackedScene" uid="uid://cf305kjyv7ohy" path="res://src/UI/ui_main.tscn" id="2_ow653"]
 [ext_resource type="Shader" path="res://src/mirage.gdshader" id="2_wv0ls"]
 [ext_resource type="PackedScene" uid="uid://cjypbfa4nmq0c" path="res://src/Game/screen_transition.tscn" id="10_uobty"]
 [ext_resource type="Shader" path="res://src/Game/game.gdshader" id="11_4l6u0"]
@@ -34,6 +35,8 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ou6tc")
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_nnfux")
+level2 = null
+main = ExtResource("2_ow653")
 
 [node name="ScreenTransition" parent="." instance=ExtResource("10_uobty")]
 
@@ -49,18 +52,22 @@ offset_right = 1148.0
 offset_bottom = 664.0
 
 [node name="background" type="ParallaxBackground" parent="."]
+layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="background"]
 modulate = Color(0.529412, 0.513726, 0.513726, 1)
-z_index = -2
 texture_filter = 1
 texture_repeat = 3
 motion_mirroring = Vector2(1551, 1551)
 
 [node name="Sand" type="Sprite2D" parent="background/ParallaxLayer"]
+z_index = -1
 scale = Vector2(2.75, 2.75)
 texture = ExtResource("13_h2j83")
 centered = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="background"]
+color = Color(0.621524, 0.621524, 0.621524, 1)
 
 [node name="Noise" type="ParallaxBackground" parent="."]
 layer = 2

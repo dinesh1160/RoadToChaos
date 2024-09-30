@@ -18,6 +18,7 @@ var can_laugh = false
 
 @export var level2 : PackedScene
 @export var blood : PackedScene
+@export var main : PackedScene
 
 func _ready() -> void:
 	
@@ -69,3 +70,10 @@ func _on_finish_line_body_entered(body):
 		transition.play("fade_in")
 		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_packed(level2)
+
+
+func _on_finishline_2_body_entered(body):
+	if body.is_in_group("car"):
+		transition.play("fade_in")
+		await get_tree().create_timer(0.5).timeout
+		get_tree().change_scene_to_packed(main)

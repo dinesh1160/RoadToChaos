@@ -5,7 +5,7 @@ var health = 30  #put it in the gamemanager
 
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite_2d = $AnimatedSprite2D
-
+@export var main : PackedScene
 @export var Bullet : PackedScene
 @onready var end_of_gun = $EndOfGun
 @onready var boost_timer = $Boost_timer
@@ -144,7 +144,7 @@ func handle_hit():
 		health -= 1
 		
 		if health<=0:
-			queue_free()
+			get_tree().change_scene_to_packed(main)
 	print(health)
 	healthbar.set_health(health)
 	
