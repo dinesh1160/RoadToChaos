@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://byinh3p0n1tsy"]
+[gd_scene load_steps=15 format=3 uid="uid://byinh3p0n1tsy"]
 
 [ext_resource type="Script" path="res://src/Game/game.gd" id="1_nnfux"]
 [ext_resource type="Shader" path="res://src/mirage.gdshader" id="2_wv0ls"]
+[ext_resource type="PackedScene" uid="uid://cjypbfa4nmq0c" path="res://src/Game/screen_transition.tscn" id="10_uobty"]
 [ext_resource type="Shader" path="res://src/Game/game.gdshader" id="11_4l6u0"]
 [ext_resource type="PackedScene" uid="uid://bhhit7xi1deji" path="res://src/Car/car.tscn" id="12_70pfm"]
 [ext_resource type="Texture2D" uid="uid://dyd2etq8cy1c" path="res://assets/sand.jpg" id="13_h2j83"]
@@ -33,6 +34,8 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ou6tc")
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_nnfux")
+
+[node name="ScreenTransition" parent="." instance=ExtResource("10_uobty")]
 
 [node name="Mirage" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)

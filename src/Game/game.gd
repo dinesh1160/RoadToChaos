@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var transition = $ScreenTransition/ColorRect/AnimationPlayer
+
+
 @onready var car = $Car
 @onready var bullet_manger = $BulletManger
 @onready var manmy = $Manmy
@@ -17,6 +20,8 @@ var can_laugh = false
 @export var blood : PackedScene
 
 func _ready() -> void:
+	
+	transition.play("fade_out")
 	randomize()
 	color_rect.visible = false
 	Signalmanager.fired_bullet.connect(Callable(bullet_manger, "handle_bullet_spawned"))
@@ -61,4 +66,6 @@ func _on_laugh_finished():
 
 func _on_finish_line_body_entered(body):
 	if body.is_in_group("car"):
+		transition.play("fade_in")
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_packed(level2)
